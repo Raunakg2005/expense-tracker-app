@@ -1,0 +1,56 @@
+# Dependency directories
+node_modules/
+UI_IMPROVEMENTS.md
+QUICKSTART.md
+GOOGLE_OAUTH_GUIDE.md
+PROJECT_SUMMARY.md
+
+# Build output
+build/
+dist/
+dist-ssr/
+
+# Vite cache
+.vite/
+
+# Local env files
+.env
+.env.*
+
+# Log files
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Editor directories and files
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Test coverage
+coverage/
+
+# Backend/server folders
+server/node_modules/
+server/logs/
+server/.env
+
+# Misc
+*.local
+
+# Ignore public generated assets (optional, if any)
+# public/assets/
+
+# End of .gitignore
