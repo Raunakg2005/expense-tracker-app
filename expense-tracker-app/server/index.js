@@ -29,7 +29,10 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: [
+    'http://localhost:5173',
+    'https://kharcha-tracker-ebon.vercel.app'
+  ],
   credentials: true
 }));
 app.use(express.json());
@@ -55,7 +58,13 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: 'Something went wrong!', error: err.message });
 });
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-});
+// Export the app for serverless deployment (Vercel)
+export default app;
+
+// Only start the server if this file is run directly (for local development)
+if (import.meta.url === `file://${process.argv[1]}`) {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running on port ${PORT}`);
+  });
+}
