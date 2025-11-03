@@ -3,12 +3,27 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import authRoutes from './routes/authOTP.js';
 import expenseRoutes from './routes/expenses.js';
 import budgetRoutes from './routes/budgets.js';
 import userRoutes from './routes/users.js';
 
 dotenv.config();
+
+// If the env var isn't loaded (for example when running `node index.js` from the
+// `server/` directory), try to load the .env from the project root as a fallback.
+if (!process.env.MONGODB_URI) {
+  try {
+    const __dirname = path.dirname(fileURLToPath(import.meta.url));
+    const projectRootEnv = path.join(__dirname, '..', '.env');
+    dotenv.config({ path: projectRootEnv });
+    // Now process.env should be populated if .env existed at project root
+  } catch (e) {
+    // ignore — we'll handle missing URI later when connecting
+  }
+}
 
 const app = express();
 

@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom';
-import { Wallet, Menu, X } from 'lucide-react';
+import { Wallet, Menu, X, Sun, Moon } from 'lucide-react';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
+import { useTheme } from '../context/ThemeContext';
 
 const PublicNavbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { isAuthenticated } = useAuth();
+  const { theme, toggleTheme } = useTheme();
 
   const navLinks = [
     { name: 'About', path: '/about' },
@@ -16,7 +18,7 @@ const PublicNavbar = () => {
   ];
 
   return (
-    <nav className="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
+    <nav className="bg-white/80 dark:bg-gray-800/90 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-transparent dark:border-gray-700">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -24,8 +26,8 @@ const PublicNavbar = () => {
             <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-700 rounded-lg flex items-center justify-center">
               <Wallet className="w-6 h-6 text-white" />
             </div>
-            <span className="text-xl font-bold text-gray-900 hidden sm:block">ExpenseTracker</span>
-            <span className="text-lg font-bold text-gray-900 sm:hidden">ET</span>
+            <span className="text-xl font-bold text-gray-900 dark:text-gray-100 hidden sm:block">ExpenseTracker</span>
+            <span className="text-lg font-bold text-gray-900 dark:text-gray-100 sm:hidden">ET</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -34,7 +36,7 @@ const PublicNavbar = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className="text-gray-600 hover:text-gray-900 font-medium transition-colors"
+                className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 font-medium transition-colors"
               >
                 {link.name}
               </Link>
@@ -50,7 +52,7 @@ const PublicNavbar = () => {
               <>
                 <Link
                   to="/login"
-                  className="text-gray-600 hover:text-gray-900 font-medium transition-colors"
+                  className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 font-medium transition-colors"
                 >
                   Login
                 </Link>
@@ -62,17 +64,24 @@ const PublicNavbar = () => {
                 </Link>
               </>
             )}
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 bg-gray-50 dark:bg-gray-800 border border-transparent hover:border-gray-200 dark:hover:border-gray-700 text-gray-600 dark:text-gray-200"
+              title="Toggle theme"
+            >
+              {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-gray-100"
+            className="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300"
           >
             {isMobileMenuOpen ? (
-              <X className="w-6 h-6 text-gray-600" />
+              <X className="w-6 h-6" />
             ) : (
-              <Menu className="w-6 h-6 text-gray-600" />
+              <Menu className="w-6 h-6" />
             )}
           </button>
         </div>
@@ -85,7 +94,7 @@ const PublicNavbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden border-t border-gray-200 bg-white"
+            className="md:hidden border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800"
           >
             <div className="px-4 py-4 space-y-2">
               {navLinks.map((link) => (
@@ -93,7 +102,7 @@ const PublicNavbar = () => {
                   key={link.path}
                   to={link.path}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-lg font-medium transition-colors"
+                  className="block px-4 py-3 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100 rounded-lg font-medium transition-colors"
                 >
                   {link.name}
                 </Link>
@@ -111,7 +120,7 @@ const PublicNavbar = () => {
                   <Link
                     to="/login"
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="block px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-lg font-medium transition-colors"
+                    className="block px-4 py-3 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100 rounded-lg font-medium transition-colors"
                   >
                     Login
                   </Link>

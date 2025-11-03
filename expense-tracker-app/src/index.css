@@ -6,6 +6,49 @@
   body {
     @apply bg-gray-50 text-gray-900;
   }
+
+  /* Dark mode base styles when the 'dark' class is present on <html> */
+  .dark body {
+    @apply bg-gray-950 text-gray-50;
+  }
+  
+  .dark {
+    color-scheme: dark;
+  }
+  
+  /* Global dark mode text colors */
+  .dark h1,
+  .dark h2,
+  .dark h3,
+  .dark h4,
+  .dark h5,
+  .dark h6 {
+    @apply text-gray-50;
+  }
+  
+  .dark p {
+    @apply text-gray-300;
+  }
+  
+  .dark span {
+    @apply text-gray-300;
+  }
+  
+  .dark td {
+    @apply text-gray-300;
+  }
+  
+  .dark th {
+    @apply text-gray-200;
+  }
+  
+  .dark a:not(.btn-primary):not(.bg-primary-600):not(.bg-gradient-to-r) {
+    @apply text-primary-400;
+  }
+  
+  .dark label {
+    @apply text-gray-300;
+  }
 }
 
 @layer components {
@@ -22,7 +65,7 @@
   }
   
   .input-field {
-    @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200;
+    @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 bg-white text-gray-900;
   }
   
   .card {
@@ -31,6 +74,23 @@
   
   .stat-card {
     @apply bg-gradient-to-br from-white to-gray-50 rounded-xl shadow-md p-6 border border-gray-100;
+  }
+
+  /* Dark-mode tweaks for common components */
+  .dark .btn-secondary {
+    @apply bg-gray-700 hover:bg-gray-600 text-gray-100;
+  }
+
+  .dark .card {
+    @apply bg-gray-800 border border-gray-700;
+  }
+
+  .dark .stat-card {
+    @apply bg-gradient-to-br from-gray-800 to-gray-900 border-gray-700;
+  }
+
+  .dark .input-field {
+    @apply bg-gray-800 border-gray-600 text-gray-50 placeholder-gray-400;
   }
 }
 
@@ -51,4 +111,127 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-track {
+  background: #1f2937;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #4b5563;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
+/* Additional global dark mode utilities - only apply where no dark: variant exists */
+
+.dark .border-gray-100 {
+  border-color: #374151;
+}
+
+.dark .border-gray-200 {
+  border-color: #4b5563;
+}
+
+.dark .border-gray-300 {
+  border-color: #6b7280;
+}
+
+/* Background overrides - but NOT for elements with explicit dark:bg- classes */
+.dark .bg-gray-50:not([class*="dark:bg-"]) {
+  background-color: #1f2937;
+}
+
+.dark .hover\:bg-gray-50:hover:not([class*="dark:hover:bg-"]) {
+  background-color: #374151;
+}
+
+.dark .bg-gray-100:not([class*="dark:bg-"]) {
+  background-color: #374151;
+}
+
+.dark .bg-gray-200:not([class*="dark:bg-"]) {
+  background-color: #4b5563;
+}
+
+.dark .hover\:bg-gray-100:hover:not([class*="dark:hover:bg-"]) {
+  background-color: #4b5563;
+}
+
+.dark .hover\:bg-gray-300:hover:not([class*="dark:hover:bg-"]) {
+  background-color: #6b7280;
+}
+
+/* Text color overrides - only where no dark: variant is explicitly set */
+.dark .text-gray-500:not([class*="dark:text-"]) {
+  color: #9ca3af;
+}
+
+.dark .text-gray-600:not([class*="dark:text-"]) {
+  color: #d1d5db;
+}
+
+.dark .text-gray-700:not([class*="dark:text-"]) {
+  color: #e5e7eb;
+}
+
+.dark .text-gray-800:not([class*="dark:text-"]) {
+  color: #f3f4f6;
+}
+
+.dark .text-gray-900:not([class*="dark:text-"]) {
+  color: #f9fafb;
+}
+
+/* Dark mode for icon backgrounds - only where no dark: variant exists */
+.dark .bg-red-100:not([class*="dark:bg-"]) {
+  background-color: rgba(220, 38, 38, 0.2);
+}
+
+.dark .bg-green-100:not([class*="dark:bg-"]) {
+  background-color: rgba(34, 197, 94, 0.2);
+}
+
+.dark .bg-blue-100:not([class*="dark:bg-"]) {
+  background-color: rgba(59, 130, 246, 0.2);
+}
+
+.dark .bg-purple-100:not([class*="dark:bg-"]) {
+  background-color: rgba(168, 85, 247, 0.2);
+}
+
+.dark .bg-orange-100:not([class*="dark:bg-"]) {
+  background-color: rgba(249, 115, 22, 0.2);
+}
+
+.dark .bg-primary-100:not([class*="dark:bg-"]) {
+  background-color: rgba(14, 165, 233, 0.2);
+}
+
+/* Dark text for icons - only where no dark: variant exists */
+.dark .text-red-600:not([class*="dark:text-"]) {
+  color: #f87171;
+}
+
+.dark .text-green-600:not([class*="dark:text-"]) {
+  color: #4ade80;
+}
+
+.dark .text-blue-600:not([class*="dark:text-"]) {
+  color: #60a5fa;
+}
+
+.dark .text-purple-600:not([class*="dark:text-"]) {
+  color: #c084fc;
+}
+
+.dark .text-orange-600:not([class*="dark:text-"]) {
+  color: #fb923c;
+}
+
+.dark .text-primary-700:not([class*="dark:text-"]) {
+  color: #38bdf8;
 }

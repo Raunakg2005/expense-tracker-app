@@ -260,7 +260,7 @@ const Expenses = () => {
         >
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Title *</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Title *</label>
               <input
                 type="text"
                 required
@@ -273,7 +273,7 @@ const Expenses = () => {
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Amount *</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Amount *</label>
                 <input
                   type="number"
                   step="0.01"
@@ -286,7 +286,7 @@ const Expenses = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Date *</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Date *</label>
                 <input
                   type="date"
                   required
@@ -298,7 +298,7 @@ const Expenses = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Category *</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Category *</label>
               <select
                 required
                 value={formData.category}
@@ -312,7 +312,7 @@ const Expenses = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Payment Method</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Payment Method</label>
               <select
                 value={formData.paymentMethod}
                 onChange={(e) => setFormData({ ...formData, paymentMethod: e.target.value })}
@@ -325,7 +325,7 @@ const Expenses = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Description</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Description</label>
               <textarea
                 value={formData.description}
                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}

@@ -225,7 +225,7 @@ const Budgets = () => {
         >
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Category *</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Category *</label>
               <select
                 required
                 value={formData.category}
@@ -244,7 +244,7 @@ const Budgets = () => {
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Budget Limit *</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Budget Limit *</label>
                 <input
                   type="number"
                   step="0.01"
@@ -257,7 +257,7 @@ const Budgets = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Period *</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Period *</label>
                 <select
                   required
                   value={formData.period}
@@ -273,7 +273,7 @@ const Budgets = () => {
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Start Date *</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Start Date *</label>
                 <input
                   type="date"
                   required
@@ -284,7 +284,7 @@ const Budgets = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">End Date *</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">End Date *</label>
                 <input
                   type="date"
                   required
@@ -296,7 +296,7 @@ const Budgets = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Alert Threshold ({formData.alertThreshold}%)
               </label>
               <input

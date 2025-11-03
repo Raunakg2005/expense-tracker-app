@@ -1,7 +1,13 @@
 import axios from 'axios';
 
+// Prefer an explicit Vite env var so we can point the frontend to a separate
+// backend URL in production when needed. In a single-Vercel deployment this
+// can be set to '/api' (Vercel routes) or to the full backend URL when
+// backend is deployed separately.
+const BASE = import.meta.env.VITE_API_BASE_URL ?? (import.meta.env.PROD ? '/api' : 'http://localhost:5000/api');
+
 const api = axios.create({
-  baseURL: 'http://localhost:5000/api',
+  baseURL: BASE,
   headers: {
     'Content-Type': 'application/json',
   },
